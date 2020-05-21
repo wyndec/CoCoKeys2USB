@@ -1,5 +1,5 @@
 /*
-    cocoKeyMaps.h
+    cocoKeyMaps.h v1.0
     by: Paul Fiscarelli
     
     Copyright (c) 2020, Paul Fiscarelli

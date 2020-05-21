@@ -1,5 +1,5 @@
 /* 
-    CoCoKeys2USB v1.2
+    CoCo Keys2USB v1.21
     by: Paul Fiscarelli
     
     Copyright (c) 2020, Paul Fiscarelli
@@ -166,7 +166,8 @@ void sendKeyPress(int key)
 
 /* checkSpecialKeys(): This function is for handling special keystroke cases.
  *  Based on the current value of what modifierKeys are currently pressed,
- *  a special keystroke will cause a keystroke based on that modifierKeys buffer.
+ *  a special keystroke will emulate a keystroke based on that modifierKeys buffer.
+ *  The keyboardStatus value is checked based on the row/column index of a key press.
  */
 int checkSpecialKeys()
 {
@@ -176,7 +177,7 @@ int checkSpecialKeys()
   {
     case(16):
       //Keyboard.press(KEY_LEFT_CTRL);      // Control Key
-      if(keyboardStatus == 20){
+      if(keyboardStatus == 20){             // 'T' key pressed
         Keyboard.press(KEY_TAB);            // Emulate TAB Key
         delay(75);
         specialKeys = 0;
@@ -184,6 +185,17 @@ int checkSpecialKeys()
       }
       else {
         specialKeys = -1;                   // reset special keys
+      }
+      break;
+    case(128):
+      //Keyboard.press(KEY_SHIFT);          // Shift Key
+      if(keyboardStatus == 48){             // 'Enter' key pressed
+        cycleKeyMap();                      // go cycle Key Map
+        specialKeys = 0;
+        Keyboard.releaseAll();
+      }
+      else {
+        specialKeys = -1;
       }
       break;
     default:                                // no special key pressed
