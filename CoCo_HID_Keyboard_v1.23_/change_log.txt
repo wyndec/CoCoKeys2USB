@@ -1,0 +1,23 @@
+CoCo Keys2USB
+*****************
+
+v1.23 10-26-2021
+-----------------
+* added better support for OS-9 Ctrl Keys
+* added cocoKeyIndex.h for key index lookups
+
+
+v1.22 07-15-2020
+-----------------
+* added Ctrl+@ to emulate '@' on PC
+* added Ctrl+Left-Arrow for destructive backspace on PC
+
+
+v1.21 05-21-2020
+-----------------
+* added Shift+Enter to cycle key maps for CoCo1/2 keyboards
+
+
+v1.2  04-20-2020
+-----------------
+* initial release

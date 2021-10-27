@@ -1,5 +1,5 @@
 /* 
-    CoCo Keys2USB v1.22
+    CoCo Keys2USB v1.23
     by: Paul Fiscarelli
     
     Copyright (c) 2020, Paul Fiscarelli
@@ -65,6 +65,7 @@
 
 #include <Keyboard.h>
 #include "cocoKeyMaps.h"
+#include "cocoKeyIndex.h"
 
 // 15-Pins of the Color Computer keyboard connected to the Pro Micro
 //  *note - Pin-3 of keyboard is no-connection
@@ -172,40 +173,41 @@ int checkSpecialKeys()
 {
   switch(modifierKeys)
   {
-    case(16):                               // Ctrl Key Pressed
-      if(keyboardStatus == 0){              // '@' key pressed
-        Keyboard.release(KEY_LEFT_CTRL);    // release Ctrl Key
+    case(16):                                       // Ctrl Key Pressed
+      if(keyboardStatus == KEY_AT_INDEX){           // '@' key pressed
+        Keyboard.release(KEY_LEFT_CTRL);            // release Ctrl Key
         delay(25);
-        Keyboard.press(KEY_SHIFT);          // emulate '@' Key
+        Keyboard.press(KEY_SHIFT);                  // emulate '@' Key
         Keyboard.press(KEY_2);
         delay(50);
         specialKeys = 0;
         Keyboard.releaseAll();
       }
-      else if(keyboardStatus == 20){        // 'T' key pressed
-        Keyboard.release(KEY_LEFT_CTRL);    // release Ctrl Key
+      else if(keyboardStatus == KEY_T_INDEX){       // 'T' key pressed
+        Keyboard.release(KEY_LEFT_CTRL);            // release Ctrl Key
         delay(25);
-        Keyboard.press(KEY_TAB);            // emulate TAB Key
+        Keyboard.press(KEY_TAB);                    // emulate TAB Key
         delay(50);
         specialKeys = 0;
         Keyboard.releaseAll();
       }
-      else if(keyboardStatus == 29){        // 'Left-Arrow' key pressed
-        Keyboard.release(KEY_LEFT_CTRL);    // release Ctrl Key
+      else if(keyboardStatus == KEY_LEFT_INDEX){    // 'Left-Arrow' key pressed
+        Keyboard.release(KEY_LEFT_CTRL);            // release Ctrl Key
         delay(25);
-        Keyboard.press(KEY_BACKSPACE);      // emulate Backspace Key
+        Keyboard.press(KEY_BACKSPACE);              // emulate Backspace Key
         delay(50);
         specialKeys = 0;
         Keyboard.releaseAll();
       }
       else {
-        specialKeys = -1;                   // reset special keys
+        sendKeyPress(keyboardStatus);               // emulate OS-9 Ctrl Keys
+        specialKeys = 0;
+        Keyboard.releaseAll();
       }
       break;
     case(128):
-      //Keyboard.press(KEY_SHIFT);          // Shift Key
-      if(keyboardStatus == 48){             // 'Enter' key pressed
-        cycleKeyMap();                      // go cycle Key Map
+      if(keyboardStatus == KEY_ENTER_INDEX){        // 'Enter' key pressed
+        cycleKeyMap();                              // go cycle Key Map (CoCo 1/2 keyboards)
         specialKeys = 0;
         Keyboard.releaseAll();
       }
@@ -213,7 +215,7 @@ int checkSpecialKeys()
         specialKeys = -1;
       }
       break;
-    default:                                // no special key pressed
+    default:                                        // no special key pressed
       specialKeys = -1;
       break;             
   }
@@ -318,7 +320,6 @@ void sendModifiers()
       Keyboard.press(KEY_LEFT_ALT);         // Alt Key
       break;
     default:
-      //Keyboard.println(modifierKeys);
       break;
   }
 }

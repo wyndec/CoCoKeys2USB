@@ -24,7 +24,7 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
-#include <Keyboard.h>
+#include "Keyboard.h"
 
 #define KEY_AT  0x5B
 #define KEY_A   0x61
@@ -77,7 +77,7 @@
 #define KEY_SLASH       0x2F
 #define KEY_MINUS       0x3D
 
-const uint8_t keyMapVCC[56] = {KEY_RIGHT_ALT, KEY_A, KEY_B, KEY_C, KEY_D, KEY_E, KEY_F, KEY_G,
+uint8_t keyMapVCC[56] = {KEY_RIGHT_ALT, KEY_A, KEY_B, KEY_C, KEY_D, KEY_E, KEY_F, KEY_G,
                                KEY_H, KEY_I, KEY_J, KEY_K, KEY_L, KEY_M, KEY_N, KEY_O,
                                KEY_P, KEY_Q, KEY_R, KEY_S, KEY_T, KEY_U, KEY_V, KEY_W,
                                KEY_X, KEY_Y, KEY_Z, KEY_UP_ARROW, KEY_DOWN_ARROW, KEY_BACKSPACE, KEY_RIGHT_ARROW, KEY_SPACE,
@@ -85,7 +85,7 @@ const uint8_t keyMapVCC[56] = {KEY_RIGHT_ALT, KEY_A, KEY_B, KEY_C, KEY_D, KEY_E,
                                KEY_8, KEY_9, KEY_COLON, KEY_SEMICOLON, KEY_COMMA, KEY_MINUS, KEY_PERIOD, KEY_SLASH,
                                KEY_RETURN, KEY_HOME, KEY_END, KEY_LEFT_ALT, KEY_LEFT_CTRL, KEY_F1, KEY_F2, KEY_LEFT_SHIFT};
 
-const uint8_t keyMapXRoar[56] = {KEY_AT, KEY_A, KEY_B, KEY_C, KEY_D, KEY_E, KEY_F, KEY_G,
+uint8_t keyMapXRoar[56] = {KEY_AT, KEY_A, KEY_B, KEY_C, KEY_D, KEY_E, KEY_F, KEY_G,
                                  KEY_H, KEY_I, KEY_J, KEY_K, KEY_L, KEY_M, KEY_N, KEY_O,
                                  KEY_P, KEY_Q, KEY_R, KEY_S, KEY_T, KEY_U, KEY_V, KEY_W,
                                  KEY_X, KEY_Y, KEY_Z, KEY_UP_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW, KEY_RIGHT_ARROW, KEY_SPACE,
@@ -93,7 +93,7 @@ const uint8_t keyMapXRoar[56] = {KEY_AT, KEY_A, KEY_B, KEY_C, KEY_D, KEY_E, KEY_
                                  KEY_8, KEY_9, KEY_COLON, KEY_SEMICOLON, KEY_COMMA, KEY_MINUS, KEY_PERIOD, KEY_SLASH, 
                                  KEY_RETURN, KEY_HOME, KEY_ESC, KEY_LEFT_ALT, KEY_LEFT_CTRL, KEY_F1, KEY_F2, KEY_LEFT_SHIFT};
 
-const uint8_t keyMapMAME[56] = {KEY_AT, KEY_A, KEY_B, KEY_C, KEY_D, KEY_E, KEY_F, KEY_G,
+uint8_t keyMapMAME[56] = {KEY_AT, KEY_A, KEY_B, KEY_C, KEY_D, KEY_E, KEY_F, KEY_G,
                                 KEY_H, KEY_I, KEY_J, KEY_K, KEY_L, KEY_M, KEY_N, KEY_O,
                                 KEY_P, KEY_Q, KEY_R, KEY_S, KEY_T, KEY_U, KEY_V, KEY_W,
                                 KEY_X, KEY_Y, KEY_Z, KEY_UP_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW, KEY_RIGHT_ARROW, KEY_SPACE,
